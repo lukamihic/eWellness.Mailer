@@ -1,0 +1,25 @@
+version: '3.8'
+
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5673:5672"
+      - "15673:15672"
+    networks:
+    - app-network
+
+  mailer:
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "5122:5122"
+    depends_on:
+      - rabbitmq
+    networks:
+      - app-network

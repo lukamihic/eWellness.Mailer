@@ -17,18 +17,18 @@ builder.Services.AddTransient<IMailService, MailService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
 
-app.Urls.Add("http://*:5122");  
+//app.Urls.Add("http://*:5122");  
 
 app.Run();
